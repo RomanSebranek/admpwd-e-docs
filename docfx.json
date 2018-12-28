@@ -33,6 +33,11 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+          "files": [
+            "Reference/**.yml"
+          ]
       }
     ],
     "resource": [
