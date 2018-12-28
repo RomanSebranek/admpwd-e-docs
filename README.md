@@ -1,4 +1,4 @@
-# admpwd-e-docs
+# AdmPwd.E-documentation
 Repo contains documentation for AdmPwd.E solution
 
 Currently covers the following areas:
