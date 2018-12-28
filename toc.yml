@@ -1,0 +1,6 @@
+- name: Functional specification
+  href: articles/
+  homepage: articles/Specification.md
+- name: PDS Wrapper API docs
+  href: api/
+  homepage: api/index.md

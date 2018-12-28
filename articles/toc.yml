@@ -1,0 +1,62 @@
+- name: Managed clients
+  href: Specification/Managed-Clients.md
+  items:
+    - name: Implementation
+      href: Specification/Managed-Clients/Implementation.md
+    - name: Configuration
+      href: Specification/Managed-Clients/Configuration.md
+    - name: Logging
+      href: Specification/Managed-Clients/Logging.md
+- name: Active Directory
+  href: Specification/Active-Directory.md
+  items:
+    - name: Extended Rights
+      href: Specification/Active-Directory/Extended-Rights.md
+    - name: AD Schema changes
+      href: Specification/Active-Directory/Schema.md
+- name: Password Decryption Service
+  href: Specification/Password-Decryption-Service.md
+  items:
+    - name: Configuration
+      href: Specification/Password-Decryption-Service/Configuration.md
+    - name: Service account
+      href: Specification/Password-Decryption-Service/Service-Account.md
+    - name: Service discovery
+      href: Specification/Password-Decryption-Service/Service-Discovery.md
+    - name: Logging
+      href: Specification/Password-Decryption-Service/Logging.md
+      items:
+      - name: Audit
+        href: Specification/Password-Decryption-Service/Logging/Audit.md
+      - name: Licensing
+        href: Specification/Password-Decryption-Service/Logging/Licensing.md
+      - name: Operational
+        href: Specification/Password-Decryption-Service/Logging/Operational.md
+      - name: Account Management
+        href: Specification/Password-Decryption-Service/Logging/Account-Management.md
+    - name: Centralized Client Logging
+      href: Specification/Password-Decryption-Service/Centralized-Client-Logging.md
+- name: Management tools
+  href: Specification/Management-Tools.md
+  items:
+    - name: Configuration
+      href: Specification/Management-Tools/Configuration.md
+    - name: PowerShell module
+      href: Specification/Management-Tools/PowerShell-Module.md
+- name: Installers
+  href: Specification/Installers.md
+  items:
+    - name: Managed clients
+      href: Specification/Installers/Managed-Clients.md
+    - name: Management Tools
+      href: Specification/Installers/Management-Tools.md
+      items:
+        - name: Fat Client UI
+          href: Specification/Installers/Management-Tools/Fat-client.md
+        - name: GPO Templates
+          href: Specification/Installers/Management-Tools/GPO-Templates.md
+        - name: Powershell module
+          href: Specification/Installers/Management-Tools/PowerShell-Module.md
+        - name: Password Decryption Service
+          href: Specification/Installers/Management-Tools/Password-Decryption-Service.md
+
