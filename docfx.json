@@ -36,7 +36,8 @@
       },
       {
           "files": [
-            "Reference/**.yml"
+            "Reference/**.yml",
+            "Guides/**.yml"
           ]
       }
     ],

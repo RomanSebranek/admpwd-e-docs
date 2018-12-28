@@ -1,0 +1,6 @@
+- name: Guides and How-To's
+  href: ../articles/Guides.md
+  items:
+      - name: User guide
+        href: ../articles/Guides/Operations/User/Local-Admin-Passwords.md
+

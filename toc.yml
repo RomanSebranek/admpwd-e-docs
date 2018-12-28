@@ -1,6 +1,9 @@
 - name: Functional specification
   href: articles/
   homepage: articles/Specification.md
+- name: Guides and How-To's
+  href: Guides/
+  homepage: articles/Guides.md
 - name: PDS Wrapper API docs
   href: Reference/
 
