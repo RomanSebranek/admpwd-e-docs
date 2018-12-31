@@ -20,7 +20,6 @@ Fat Client UI is a graphical interface available (Fat Client) that can be instal
 What happens if a user who hasn’t been granted rights to see the local Administrators password tries to access it? If they were to gain access to the GUI interface the password won’t be displayed.  They are also given an Access Denied message.
 
 ![](~/images/Operations/User/ui-access-denied.png)
-<img class="alignnone size-full wp-image-2811" src="/wp-content/uploads/2016/11/2017-01-06_16-21-44.png" alt="" width="392" height="478" />
 
 *Note*: If they have installed the RSAT tools and run Active Directory Users and Computers (ADUC) to view the password it will show as <not set>. 
 
