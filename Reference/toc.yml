@@ -1,5 +1,5 @@
-- name: Version history
-  href: ../articles/Version.md
+- name: Introduction and version history
+  href: ../articles/Wrapper-Intro.md
   items:
     - name: v7.5.0.2
       href: ../articles/Version/v7.5.0.2.md
@@ -13,5 +13,7 @@
       href: ../articles/Version/v7.5.4.0.md
     - name: v7.5.5.0
       href: ../articles/Version/v7.5.5.0.md
+    - name: v7.6.0.0
+      href: ../articles/Version/v7.6.0.0.md
 - name: Reference
   href: ../api/toc.yml

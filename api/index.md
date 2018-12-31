@@ -15,4 +15,4 @@ To get started, add a reference to integration library to your project, and call
 For example, reading a password of managed admin account is just single line of code in your application.
 For code examples, see open source project with code samples on <a href="https://github.com/jformacek/admpwd-e/tree/master/Clients" target="_blank">GitHub</a>
 
-Enter the reference docs pages : [here](../articles/Version.md) 
+Enter the reference docs pages [**HERE**](../articles/Wrapper-Intro.md) 

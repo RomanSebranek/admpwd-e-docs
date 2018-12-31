@@ -10,7 +10,7 @@ Centralized logging of client activity provides consolidated view of state of ma
 Central server stores events received from managed clients in dedicated event log `GreyCorbel-AdmPwd.E-ClientActivity/Operational`
 
 ## Network communication
-Events are transported via UDP transport which is very effective in terms of network bandwidth and resource consumption. Defrault port that PDS server listens on for events from client activity is 61184/udp
+Events are transported via UDP transport which is very effective in terms of network bandwidth and resource consumption. Defrault port that PDS server listens on for events from client activity is **61184/udp**
 *Note*: In some cases, such as when PDS is co-hosted with Windows DNS server, it may happen that default port is occupied by other service, and PDS cannot open listener on configured port. If this happens, there are the following ways to remove the conflict:
 * Configure other service to use different port, or keep the default port available for PDS
 * Configure PDS to listen on different port
