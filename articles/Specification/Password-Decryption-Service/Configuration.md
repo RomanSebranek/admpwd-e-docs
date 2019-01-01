@@ -269,7 +269,7 @@ Sample of pretty-much default configuration:
     <containers>
       <!--<add 
         distinguishedName="OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com" 
-        passwordAge="240" 
+        passwordAge="43200" 
         keyId="1" 
         passwordComplexity="LargeSmallNumSpec" 
         passwordLength="12" 

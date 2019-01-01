@@ -17,7 +17,7 @@ Sample configuration looks like this:
     <containers>
       add 
         distinguishedName="OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com" 
-        passwordAge="720" 
+        passwordAge="86400" 
         keyId="1" 
         passwordComplexity="LargeSmallNumSpec" 
         passwordLength="12" 
@@ -30,7 +30,7 @@ Sample configuration looks like this:
 
 Configuration above says:
 * Manage password on user accounts found in container `OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com`
-* For each account found, change password every 30 days (720 hours)
+* For each account found, change password every 60 days (86400 minutes)
 * When generating password, generape password 12 chars long, that contains Large and Small character, Numbers, and Special Characters
 * Encrypt the password in AD using encryption key with ID=1
 * Do not maintain password history
@@ -47,5 +47,8 @@ Printscreen below demonstrates this on the following scenario:
 * Process stated is configured to use account for network operations only - local profile is not created for account AD\testAcc2, and password is not cached at all
 * Still, user has ability to reach to server in security context of account AD\testAcc2 and list content of the share
 * All this happened without the need to know and type the password - user has just been granted permission to retrieve password of Managed Domain Account!
+
+Usage:  
+`RunAsAdmin.exe /user:<username> /path:<path to executable to run> [/NoLocalProfile]`
 
 [![image](../../../../images/Operations/User/managed-domain-account-runas.png "Using Managed Domain Accounts to reach server as different user")](../../../../images/Operations/User/managed-domain-account-runas.png)
