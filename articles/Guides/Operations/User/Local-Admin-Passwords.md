@@ -15,6 +15,7 @@ Once everything is configured, and Group Policy has refreshed on the clients, yo
 ## Using Fat Client UI
 
 Fat Client UI is a graphical interface available (Fat Client) that can be installed standalone, in a network share or as an add-in to Active Directory Users and Computers. You can find it in Start screen / menu:
+
 ![](../../../../images/Operations/User/ui-start-w10.png)
 
 What happens if a user who hasn’t been granted rights to see the local Administrators password tries to access it? If they were to gain access to the GUI interface the password won’t be displayed.  They are also given an Access Denied message.
