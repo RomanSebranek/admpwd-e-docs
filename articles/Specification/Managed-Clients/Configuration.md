@@ -183,4 +183,4 @@ Managed by policy *Centralized client activity reporting*</td>
 </tbody>
 </table>  
 
-*Note*: In GPO UI, all configuration settings related to configuration of CSE ale located under `Computer configuration/Administrative Templates/AdmPwd Enterprise/Managed Clients` path.
+*Note*: In GPO UI, all configuration settings related to configuration of CSE are located under `Computer configuration/Administrative Templates/AdmPwd Enterprise/Managed Clients` path.

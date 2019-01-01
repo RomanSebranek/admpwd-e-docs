@@ -63,11 +63,14 @@
       "_appTitle": "AdmPwd.E documentation",
       "_appFaviconPath": "./images/favicon.ico",
       "_appLogoPath": "./images/logo.svg",
+      "_enableSearch": "true",
+      "_enableNewTab": "true",
       "_gitContribute": {
-        "repo": "https://github.com/GreyCorbel/AdmPwd-E-Docs",
+        "repo": "https://github.com/GreyCorbel/admpwd-e-docs",
         "branch": "dev",
         "apiSpecFolder": "docs-ref-overwrite"
-      }
+      },
+      "_gitUrlPattern": "github"
     },
     "dest": "_site",
     "globalMetadataFiles": [],

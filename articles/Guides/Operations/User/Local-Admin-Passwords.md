@@ -4,22 +4,22 @@
 ## Viewing password settings in Active Directory Users and Computers
 Once everything is configured, and Group Policy has refreshed on the clients, you can look at the properties of the computer object and see the new settings. The password can be stored encrypted or unencrypted. Encrypted passwords contain a keyID prefix.
 
-![](~/images/Operations/User/pwd-unencrypted.png)
+![](../../../../images/Operations/User/pwd-unencrypted.png)
 
 *Example*: Plain text Password as stored in AD
 
-![](~/images/Operations/User/pwd-encrypted.png)
+![](../../../../images/Operations/User/pwd-encrypted.png)
 
 *Example*: Encrypted Password stored in AD and enrypted by key with ID = 4
 
 ## Using Fat Client UI
 
 Fat Client UI is a graphical interface available (Fat Client) that can be installed standalone, in a network share or as an add-in to Active Directory Users and Computers. You can find it in Start screen / menu:
-![](~/images/Operations/User/ui-start-w10.png)
+![](../../../../images/Operations/User/ui-start-w10.png)
 
 What happens if a user who hasn’t been granted rights to see the local Administrators password tries to access it? If they were to gain access to the GUI interface the password won’t be displayed.  They are also given an Access Denied message.
 
-![](~/images/Operations/User/ui-access-denied.png)
+![](../../../../images/Operations/User/ui-access-denied.png)
 
 *Note*: If they have installed the RSAT tools and run Active Directory Users and Computers (ADUC) to view the password it will show as <not set>. 
 
@@ -30,13 +30,13 @@ This information is not seen because only the Decryption Service can read the pa
 ## Password Expiration Time
 The Expiration time is stored as the number of 100-nanosecond intervals that have elapsed since the 0 hour on January 1, 1601 until the date/time that is being stored. The time is always stored in Greenwich Mean Time (GMT) in the Active Directory.
 
-![](~/images/Operations/User/pwd-expiration.png)
+![](../../../../images/Operations/User/pwd-expiration.png)
 
 If you want to manually convert it use this command:
 
 `w32tm /ntte <number you want to convert>`
 
-![](~/images/Operations/User/pwd-expiration-ntte.png)
+![](../../../../images/Operations/User/pwd-expiration-ntte.png)
 
 
 ## Retrieving passwords with PowerShell

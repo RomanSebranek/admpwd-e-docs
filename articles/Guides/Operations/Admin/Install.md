@@ -34,8 +34,8 @@ Output shows details on operations performed - for bot AD schema update AND Exte
 
 ### LDF files
 There are 2 LDF files:
-* For [AD Schema changes](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/AdmPwd_Full.ldf)
-* For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/ExtendedRights.ldf)
+* For [AD Schema changes(https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/AdmPwd_Full.zip)
+* For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/ExtendedRights.zip)
 
 Files can be imported from command line on Domain Controller by ldifde.exe tool:  
 
