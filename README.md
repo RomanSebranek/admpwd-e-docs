@@ -6,7 +6,10 @@ Currently covers the following areas:
 * Integration SDK (PDS Wrapper) reference 
 * Install guide
 * User guide
+* How-to's and FAQ
 
 Coming soon:
 * Operations guide
-* How-to's and FAQ
+* More HowTo's
+* Script samples
+
