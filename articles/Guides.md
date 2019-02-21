@@ -1,8 +1,9 @@
 # Guides and How-To's
-`Updated: 29 Dec 2018`
+`Updated: 21 Feb 2019`
 
-This section contains various guides, command samples and explanations from Oerations, Deployment and Troubleshooting areas.
-
+This section contains various guides, command samples and explanations from Operations, Deployment and Troubleshooting areas.
+## Install guide
+* [How to install and configure the solution](Guides/Operations/Admin/Install.md)
 ## Operations guide
 This manual describes daily tasks of users and administrators of the solution.  
 Daily tasks of users include:
