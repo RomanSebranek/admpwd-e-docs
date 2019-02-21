@@ -34,8 +34,8 @@ Output shows details on operations performed - for bot AD schema update AND Exte
 
 ### LDF files
 There are 2 LDF files:
-* For [AD Schema changes(https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/AdmPwd_Full.zip)
-* For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Latest/ExtendedRights.zip)
+* For [AD Schema changes(https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/AdmPwd_Full.zip)
+* For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/ExtendedRights.zip)
 
 Files can be imported from command line on Domain Controller by ldifde.exe tool:  
 
@@ -66,7 +66,7 @@ Set-AdmPwdPdsPermission -Identity ManagedMachines -AllowedPrincipals "MYDOMAIN\P
 
 # Permission to retrieve passwords from deleted computer objects
 # Note: You may need to take ownership of cn=Deleted Objects,DC=MaDomain,DC=com to be able to perform delegation
-Set-AdmPwdPdsDeletedObjectsPermission -DomainDnsName mydomain.com
+Set-AdmPwdPdsDeletedObjectsPermission -DomainDnsName mydomain.com -AllowedPrincipals "MYDOMAIN\PDS Servers"
 
 #Permissions to manage password of managed domain accounts
 Set-AdmPwdPdsManagedAccountsPermission -Identity AdmPwdManagedAccounts -AllowedPrincipals "MYDOMAIN\PDS Servers"
@@ -139,7 +139,7 @@ en-US\AdmPwd.E.adml
 ## Installation of management runtime
 Installation of management runtime is dome using `AdmPwd.E.CSE.Setup.<platform>.msi` on all Windows platforms except for Windows Nano Server. On Windows Nano server, management runtime is installed from `AdmPwd.E.Client.appx` package.
 
-Deploy installers or packages via SW distribution tool of your choice. Unatended setup command line for MSI package:  
+Deploy installers or packages via SW distribution tool of your choice. Unattended setup command line for MSI package:  
 `msiexec /i AdmPwd.E.CSE.Setup.<platform>.msi`
 
 *Note*: Remember to set policy 'Enable local admin password management' to Enabled once you are ready and management runtime is installed. Without this policy turned on, management runtime does not start machine management.
