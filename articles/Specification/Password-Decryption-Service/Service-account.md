@@ -44,5 +44,3 @@ Checklist for changing from `NETWORK SERVICE` account to domain account:
  	* Fat client UI
  	* Web UI
 7. Set domain account as logon identity of PDS Win32 service and restart the service
-
-**Important**: All installed PDS instances in AD forest must use the same service account
