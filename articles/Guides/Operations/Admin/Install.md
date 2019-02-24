@@ -51,8 +51,9 @@ This step ensures that PDS service account has appropriate permissions on AD tre
 
 By default, PDS installs under NETWORK SERVICE asccount, but can be also operated under domain account or Group Managed Service Account. Steps in this guide assume that PDS is using NETWORK SERVICE account.
 
-Best practice is to create AD group named "PDS Servers" (or any name confirming to naming convention for your AD) and make computer accounts of servers that are planned to run PDS service a members of this group.  
-*Note*: If running PDS on Domain Controller, make NETWORK SERVICE member of this group. This is because when process running under NETWORK SERVICE on Domain Controller accesses AD, it always chooses local AD instance and authenticates as NETWORK SERVICE rather than computer account.
+Best practice is to create AD group named "PDS Servers" (or any name confirming to naming convention for your AD) and make computer accounts of servers that are planned to run PDS service a members of this group.
+
+*Note*: If running PDS on Domain Controller only, you do not need to create the delegation group - delegate the permission to NETWORK SERVICE special account instead. This is because when process running under NETWORK SERVICE on Domain Controller accesses AD, it always chooses local AD instance and authenticates as NETWORK SERVICE rather than computer account. In this case, use "NT AUTHORITY\NETWORK SERVICE" as value of parameter AllowedPrincipals in delegation cmdlets below.
 
 Permissions are granted using `AdmPwd.PS` PowerShell management module. Sample script below assumes that:
 * PDS delegation group name is 'PDS Servers'
