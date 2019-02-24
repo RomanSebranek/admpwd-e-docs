@@ -5,6 +5,8 @@
         href: ../articles/Guides/Operations/User/Local-Admin-Passwords.md
       - name: Installation and configuration guide
         href: ../articles/Guides/Operations/Admin/Install.md
+      - name: MS LAPS upgrade guide
+        href: ../articles/Guides/Operations/Admin/LAPS-Upgrade.md
       - name: How To's
         items:
         - name: Managed Domain Accounts

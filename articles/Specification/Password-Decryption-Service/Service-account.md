@@ -4,6 +4,8 @@ Default service account for PDS is `NETWORK SERVICE`. In this configuration serv
 
 It is however supported to run the service under domain account. To do so service SPN must be changed and registered with domain account. Change must be performed on both service side (all running instances) and client side.
 
+**Important** All instances of PDS must use the same service account - either NETWORK SERVICE or domain account. Mixing of service accounts is not supported.
+
 To change service identity on server side, change it in AdmPwd.PDS.exe.config from <code>dns</code> to <code>servicePrincipalName</code> and set its value to <code>SVC/AdmPwd</code> as shown below:
 
 <div class="highlight highlight-text-xml">
