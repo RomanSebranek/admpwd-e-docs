@@ -11,5 +11,7 @@
         items:
         - name: Managed Domain Accounts
           href: ../articles/Guides/Operations/HowTo/Managed-Domain-Accounts.md
+        - name: PowerShell Helpers
+          href: ../articles/Guides/Operations/HowTo/PowerShell-Helpers.md
 
 
