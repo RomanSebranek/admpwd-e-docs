@@ -22,14 +22,14 @@ Expected output of command is similar to the example below:
 ```
 PS C:\windows\system32> Update-AdmPwdADSchema
 
-DistinguishedName                                                 Operation                 Status
------------------                                                 ---------                 ------
-cn=ms-MCS-AdmPwdExpirationTime,CN=Schema,CN=Configuration,DC=...  AddSchemaAttribute        EntryAlreadyExists
-cn=ms-MCS-AdmPwd,CN=Schema,CN=Configuration,DC=...                AddSchemaAttribute        EntryAlreadyExists
-cn=ms-MCS-AdmPwdHistory,CN=Schema,CN=Configuration,DC=...         AddSchemaAttribute        Success
-cn=user,CN=Schema,CN=Configuration,DC=...                         ModifySchemaClass         Success
-CN=ms-Mcs-AdmPwdReadPassword,CN=Extended-Rights,CN=Configurati... AddExtendedPermission     Success
-CN=ms-Mcs-AdmPwdResetPassword,CN=Extended-Rights,CN=Configurat... AddExtendedPermission     Success
+DistinguishedName                                    Operation                 Status
+-----------------                                    ---------                 ------
+cn=ms-MCS-AdmPwdExpirationTime,CN=Schema,CN=Conf...  AddSchemaAttribute        EntryAlreadyExists
+cn=ms-MCS-AdmPwd,CN=Schema,CN=Configuration,DC=...   AddSchemaAttribute        EntryAlreadyExists
+cn=ms-MCS-AdmPwdHistory,CN=Schema,CN=Conf...         AddSchemaAttribute        Success
+cn=user,CN=Schema,CN=Configuration,DC=...            ModifySchemaClass         Success
+CN=ms-Mcs-AdmPwdReadPassword,CN=Extended-Rights,C... AddExtendedPermission     Success
+CN=ms-Mcs-AdmPwdResetPassword,CN=Extended-Rights,... AddExtendedPermission     Success
 
 ```
 ### Configure permission model
@@ -48,10 +48,10 @@ Simply uninstall LAPS management tools and install AdmPwd.E management tools ins
 
 ### Configure GPO
 AdmPwd.E provides GPO admin templates that allow to configure and distribute solution configuration values.
-LAPS and AdmPwd.E configuration is fully compatible with the following exception: LAPS defines Password Age parameter value in days, while AdmPwd.E defines Password Age in hours. This means that while AdmPwd.E continues using other GPO parameters already defined for LAPS, you are required to configure Password Age GPO again for AdmPwd.E.
+LAPS and AdmPwd.E configuration is fully compatible (LAPS GPO is subset of AdmPwd.E GPO) with the following exception: LAPS defines Password Age parameter value in days, while AdmPwd.E defines Password Age in hours. This means that while AdmPwd.E continues using other GPO parameters already defined for LAPS, you are required to configure Password Age GPO again for AdmPwd.E.
 
 ### Distribute client management runtime
-At this moment, you have configured all necessary settings on management infrastructure side. Users of solution still can use the solution - AdmPwd.E management tools fully support data stored in AD ba LAPS management runtime and allow reading and resetting of passwords managed by LAPS. However, to use new functionalities brought by AdmPwd.E, you are required to upgrade management runtime on managed clients.
+At this moment, you have configured all necessary settings on management infrastructure side. Users of solution still can use the solution - AdmPwd.E management tools fully support data stored in AD by LAPS management runtime and allow reading and resetting of passwords managed by LAPS. However, to use new functionalities brought by AdmPwd.E, you are required to upgrade management runtime on managed clients.
 The process is very simple: just run AdmPwd.E CSE installer on managed manchines and it will automatically upgrade existing LAPS CSE. AdmPwd.E supports unattended installation; for details, see [Installation of management runtime](Install.md#installation-of-management-runtime) in Install guide
 
 ## Cleanup
