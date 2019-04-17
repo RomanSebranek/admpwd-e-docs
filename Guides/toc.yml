@@ -13,5 +13,8 @@
           href: ../articles/Guides/Operations/HowTo/Managed-Domain-Accounts.md
         - name: PowerShell Helpers
           href: ../articles/Guides/Operations/HowTo/PowerShell-Helpers.md
+        - name: Usage on non-domain joined machines
+          href: ../articles/Guides/Operations/HowTo/Usage-Non-Domain-PC.md
+
 
 

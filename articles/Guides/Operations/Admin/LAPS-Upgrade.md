@@ -22,14 +22,14 @@ Expected output of command is similar to the example below:
 ```
 PS C:\windows\system32> Update-AdmPwdADSchema
 
-DistinguishedName                                    Operation                 Status
------------------                                    ---------                 ------
-cn=ms-MCS-AdmPwdExpirationTime,CN=Schema,CN=Conf...  AddSchemaAttribute        EntryAlreadyExists
-cn=ms-MCS-AdmPwd,CN=Schema,CN=Configuration,DC=...   AddSchemaAttribute        EntryAlreadyExists
-cn=ms-MCS-AdmPwdHistory,CN=Schema,CN=Conf...         AddSchemaAttribute        Success
-cn=user,CN=Schema,CN=Configuration,DC=...            ModifySchemaClass         Success
-CN=ms-Mcs-AdmPwdReadPassword,CN=Extended-Rights,C... AddExtendedPermission     Success
-CN=ms-Mcs-AdmPwdResetPassword,CN=Extended-Rights,... AddExtendedPermission     Success
+DistinguishedName                                Operation                 Status
+-----------------                                ---------                 ------
+cn=ms-MCS-AdmPwdExpirationTime,CN=Schema,CN=...  AddSchemaAttribute        EntryAlreadyExists
+cn=ms-MCS-AdmPwd,CN=Schema,CN=Configuration...   AddSchemaAttribute        EntryAlreadyExists
+cn=ms-MCS-AdmPwdHistory,CN=Schema,CN=Conf...     AddSchemaAttribute        Success
+cn=user,CN=Schema,CN=Configuration,DC=...        ModifySchemaClass         Success
+CN=ms-Mcs-AdmPwdReadPassword,CN=Extended-Righ... AddExtendedPermission     Success
+CN=ms-Mcs-AdmPwdResetPassword,CN=Extended-Rig... AddExtendedPermission     Success
 
 ```
 ### Configure permission model
@@ -62,10 +62,12 @@ After you have installed AdmPwd.E on all managed clients and all users use AdmPw
 
 ### Cleanup of AD schema
 Cleanup of AD schema includes single task: Removal of ms-Mcs-AdmPwd* attributes from may-Contain atribute of computer class in AD schema. This is no longer needed, because AdmPwd.E adds all necessary attributes to user class in AD schema instead, and user class is superclass of computer class - computer class inherits this setting.  
-Simpy use any LDAP editor, such as AdsiEdit, to perform this task.
+Simply use any LDAP editor, such as AdsiEdit, to perform this task.
 
 ### Cleanup of AD permissions
 AdmPwd.E contains own permissions model that is based on solution specific AD extended rights. Permissions model used by LAPS relies on native AD permissions and is no longer needed by AdmPwd.E. Use standard AD management tools, such as ADUC, to remove standard AD permissions granted to users of the solution.
+We are publishing LAPS Permissions audit and removal script on [GitHub](https://github.com/GreyCorbel/admpwd-e/blob/master/LAPSCleanup/LAPSCleanup.ps1) - check it out!
+
 **Important** Be sure not to remove AdmPwd.E permissions ('Read admin password' and 'Reset admin password') - those permissions are required by AdmPwd.E.
 
 ### Cleanup of GPO
