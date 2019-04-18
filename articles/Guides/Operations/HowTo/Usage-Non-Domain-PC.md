@@ -13,7 +13,11 @@ User's certificate must have EKU = Client Authentication + SmartCard Logon. Cert
   - This makes sure that certificate of Domain Controller that authenticates you is trusted by Windows
 - Make sure that TLS versions used by DC and your non-domain joined machine are compatible (e.g. DC requires TLS1.2, but your machine is not configured to use it)
 - Import your user certificate you got from Certification Authority to your personal certificate store
-- Install AdmPwd.E management tools
+- Install AdmPwd.E management tools (including ADMX templates)
+- Open Local Group Policy Editor (gpedit.msc) and locate policy Computer configuration - Administrative templates - AdmPwd Enterprise - Administrative tools - PDS to be used
+- Enter DNS name of 1 or more PDS servers installed in AD forest you want to manage
+  - This tells all AdmPwd.E tools location of PDS server
+
 
 This is all what's needed.
 
@@ -32,7 +36,7 @@ Windows CA issues certificates that specify CRL location as multiple URLs in sin
 ```
 We have seen Windows machines that just try the first URL in CDP entry, fail on it (because cannot authenticate against AD yet) and never try another URL - this results in failure in authentication, saying that revocation server is offline.
 If this is your case, do one of the following:
-- make sure that generally available CDP (in example above the URL http://pki.maydomain.com/CRL/MyCA.crl) appears first in the list of URLs
+- make sure that generally available CDP (in example above the URL http://pki.mydomain.com/CRL/MyCA.crl) appears first in the list of URLs
 - configure your certificationauthority to put multiple URLs as separate CDP entries into certificate
 
 ## Conclusion
