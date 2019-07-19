@@ -1,20 +1,23 @@
-- name: Guides and How-To's
+- name: Guides
   href: ../articles/Guides.md
   items:
-      - name: User guide
-        href: ../articles/Guides/Operations/User/Local-Admin-Passwords.md
-      - name: Installation and configuration guide
-        href: ../articles/Guides/Operations/Admin/Install.md
-      - name: MS LAPS upgrade guide
-        href: ../articles/Guides/Operations/Admin/LAPS-Upgrade.md
-      - name: How To's
-        items:
-        - name: Managed Domain Accounts
-          href: ../articles/Guides/Operations/HowTo/Managed-Domain-Accounts.md
-        - name: PowerShell Helpers
-          href: ../articles/Guides/Operations/HowTo/PowerShell-Helpers.md
-        - name: Usage on non-domain joined machines
-          href: ../articles/Guides/Operations/HowTo/Usage-Non-Domain-PC.md
+  - name: User guide
+    href: ../articles/Guides/Operations/User/Local-Admin-Passwords.md
+  - name: Installation and configuration guide
+    href: ../articles/Guides/Operations/Admin/Install.md
+  - name: MS LAPS upgrade guide
+    href: ../articles/Guides/Operations/Admin/LAPS-Upgrade.md
+  - name: Managed Domain Accounts
+    href: ../articles/Guides/Operations/HowTo/Managed-Domain-Accounts.md
+  - name: Multi-forest deployment
+    href: ../articles/Guides/Operations/HowTo/Multi-Forest.md
+- name: How To's
+  items:
+  - name: PowerShell Helpers
+    href: ../articles/Guides/Operations/HowTo/PowerShell-Helpers.md
+  - name: Usage on non-domain joined machines
+    href: ../articles/Guides/Operations/HowTo/Usage-Non-Domain-PC.md
+
 
 
 

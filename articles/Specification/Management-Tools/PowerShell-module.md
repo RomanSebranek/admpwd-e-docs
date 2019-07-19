@@ -6,7 +6,7 @@ PowerShell module implements cmdlets as specified in table below:
 <tr>
 <th>Cmdlet</th>
 <th>Description</th>
-<th>Note</th>
+<th>*Note*</th>
 </tr>
 </thead>
 <tbody>
@@ -93,9 +93,10 @@ Needs Read/Write + CONTROL_ACCESS permission on computer object</td>
 <td>Generates new key pair in PDS</td>
 <td>Communicates with PDS
 
-Needs Key Admin role in PDS
+Audited in PDS
 
-Audited in PDS</td>
+PDS Admin role required
+</td>
 </tr>
 <tr>
 <td>Get-AdmPwdPublicKey</td>
@@ -126,7 +127,10 @@ Not audited</td>
 </tr>
 <tr>
 <td>Get-AdmPwdKeyAdminRoleName</td>
-<td>Gets the name of AD group implementing Key Admin role</td>
+<td>Gets the name of AD group implementing PDS Admin role.
+
+*Note*: In next release, the cmdlet will be renamed to Get-AdmPwdPdsAdminRoleName
+</td>
 <td>Communicates with PDS
 
 No special permission needed
@@ -180,7 +184,156 @@ Audited by PDS</td>
 <td>Get-AdmPwdUserPermissions</td>
 <td>Retrieves list of permissions directly or indirectly granted to user on given AD object (computer or user account)</td>
 <td>Communicates with PDS
+
 Not audited</td>
+</tr>
+<tr>
+<td>Get-AdmPwdPds</td>
+<td>Returns list of discovered instances of PDS service along with their parameters</td>
+<td>Does not communicate with PDS
+
+Not audited</td>
+</tr>
+<tr>
+<td>Get-AdmPwdPdsSupportedForest</td>
+<td>Returns list of supported AD forest as defined in PDS configuration.   
+*Note*: PDS Forest is always supported and may not be returned.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Add-AdmPwdPdsSupportedForest</td>
+<td>Adds supported AD forest to PDS configuration.   
+*Note*: PDS Forest is always supported and does not need to be added.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Set-AdmPwdPdsSupportedForest</td>
+<td>Updates configuration of supported AD forest in PDS configuration.   
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Remove-AdmPwdPdsSupportedForest</td>
+<td>Removes AD forest from list of supported AD forests defined in PDS configuration.
+
+*Note*: PDS Forest is always supported and cannot be removed.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Get-AdmPwdPdsSidMapping</td>
+<td>Returns list of supported SID mappings.
+
+*Note*: SID mappings help define permissions model in topolgies without AD forest trust
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Add-AdmPwdPdsSidMapping</td>
+<td>Adds new SID mapping to list of SID mappings defined in PDS configuration.   
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Set-AdmPwdPdsSidMapping</td>
+<td>Updates parameters of existing SID mapping defined in PDS configuration.   
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Remove-AdmPwdPdsSidMapping</td>
+<td>Removes SID mapping from list of SID mappings defined in PDS configuration.   
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Get-AdmPwdPdsManagedAccountsContainer</td>
+<td>Gets list of Managed Accounts Containers as defined in PDS configuration.
+
+*Note*: Managed Accounts Container is AD container where PDS service automatically manages password of user accounts. If you want user account to have password securely managed and its retrieval controlled by PDS, move it to this container.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Add-AdmPwdPdsManagedAccountsContainer</td>
+<td>Adds registration of new Managed Accounts Container to list of registered containers defined in PDS configuration.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsManagedAccountsContainer</td>
+<td>Updates parameters of registered Managed Accounts Container in PDS configuration.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
+</tr>
+<tr>
+<td>Remove-AdmPwdPdsManagedAccountsContainer</td>
+<td>Removes registration of Managed Accounts Container from list of registered containers defined in PDS configuration.
+</td>
+<td>Communicates with PDS
+
+Audited
+
+PDS Admin role required
+</td>
 </tr>
 </tbody>
 </table>

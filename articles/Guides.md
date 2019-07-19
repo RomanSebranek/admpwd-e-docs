@@ -1,10 +1,12 @@
 # Guides and How-To's
-`Updated: 18 Apr 2019`
+`Updated: 18 Jul 2019`
 
 This section contains various guides, command samples and explanations from Operations, Deployment and Troubleshooting areas.
 ## Install guide
-* [How to install and configure the solution](Guides/Operations/Admin/Install.md)
-* [How to upgrade from LAPS to AdmPwd.E](Guides/Operations/Admin/LAPS-Upgrade.md)
+* [Install and configure the solution](Guides/Operations/Admin/Install.md)
+* [Upgrade from LAPS to AdmPwd.E](Guides/Operations/Admin/LAPS-Upgrade.md)
+* [Use Managed Domain Accounts feature](Guides/Operations/HowTo/Managed-Domain-Accounts.md)
+* [Manage passwords in multi-forest topology](Guides/Operations/HowTo/Multi-Forest.md)
 ## Operations guide
 This manual describes daily tasks of users and administrators of the solution.  
 Daily tasks of users include:

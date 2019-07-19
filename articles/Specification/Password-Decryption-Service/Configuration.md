@@ -1,9 +1,31 @@
 ﻿# Configuration
 
-Configuration of PDS service is maintained in `AdmPwd.PDS.exe.config` file. Service recognizes configuration parameters as specified in table below.
+Configuration of PDS service is maintained in `PDS.config` file. Service recognizes configuration parameters as specified in table below.
 
-**Important**: PDS configuration file gets rewritten during PDS service reinstalls or upgrades. Please make sure you have backup of configuration file for such case.
+*Note*: This file is created upon first start of PDS service with default values. CHnages then can be made either manually, or via PowerShell cmdlets. File content is preserved during uninstalls and upgrades of PDS service.
 
+PowerShell cmdlets that modify content of PDS.config file are:
+
+Supported Forest management:
+- Add-AdmPwdPdsSupportedForest
+- Set-AdmPwdPdsSupportedForest
+- Remove-AdmPwdPdsSupportedForest
+
+Managed Accounts Containers:
+- Add-AdmPwdPdsManagedAccountsContainer
+- Set-AdmPwdPdsManagedAccountsContainer
+- Remove-AdmPwdPdsManagedAccountsContainer
+
+SID Mappings:
+- Add-AdmPwdPdsSidMapping
+- Set-AdmPwdPdsSidMapping
+- Remove-AdmPwdPdsSidMapping
+
+It's strongly recommended to use PowerShell cmdlets above to modify configuration of Supported forests, Managed Accounts Containers and SID mappings.
+
+*Note*: Future releases will bring more PowerShell cmdlets for management of PDS configuration.
+
+Table below specifies PDS service configurable parameters.
 
 <table>
 <thead>
@@ -55,9 +77,11 @@ Setting to `0` disables SRV record registration and refresh. This is useful in e
 *Default*: 1200 (20 minutes)</td>
 </tr>
 <tr>
-<td>Pds - Dns – Autodiscovery – DomainsToPublish – domain</td>
+<td>Pds - Dns – Autodiscovery – DomainsToPublish – Domain - DnsName</td>
 <td>DNS name of domain where PDS shall publish own SRV record</td>
 <td>
+
+*Default*: Empty list which means that PDS registers SRV recordin ow domain only.
 
 When specified, PDS registers SRV record in specified domains only.
 PDS own domain must be listed as well so as PDS would register SRV record there.  
@@ -65,10 +89,14 @@ If no domain specified, PDS registers SRV record in own domain only.</td>
 </tr>
 <tr>
 <td>Pds - Keystore</td>
-<td>Identifier of assembly implementing keystore for key pairs</td>
+<td>Identifier of assembly implementing keystore for key pairs.
+
+Do not change parameters here unless you know what are you doing.
+</td>
 <td>
 
 PDS supports extensibility and different implementations of keystore.
+
 *Note*: Default keystore that comes with the solution is of type `AdmPwd.PDS.KeyStore.FileSystemKeyStore` and is implemented in main PDS executable.
 </td>
 </tr>
@@ -76,7 +104,8 @@ PDS supports extensibility and different implementations of keystore.
 <td>Pds – AccessControl - HonorFullControlPermission</td>
 <td>
 
-Specifies whether or not to honor Full Control permission on computer/user object when performing authorization checks for password reads and resets.  
+Specifies whether or not to honor Full Control permission on computer/user object when performing authorization checks for password reads and resets.
+
 When set to TRUE, users who have Full control permission on computer objects can read and reset local admin password even when they are not given explicit permissions as specified in [Extended Rights specification](../Active-Directory/Extended-Rights.md)
 </td>
 <td>
@@ -91,17 +120,19 @@ When set to TRUE, users who have Full control permission on computer objects can
 
 *Default*: Empty list
 
+Use PowerShell to manage configuration of SID mappings
+
 </td>
 </tr>
 <tr>
-<td>Pds – AccessControl - MandatoryGroups</td>
+<td>Pds – AccessControl - MandatoryGroups - Group - Sid</td>
 <td>Contains list of SIDs of groups caller has to be member of so as requests for password read and reset was honored. Works as additional protection layer in additions to standard Read/Reset password. Used to enforce Authentication Mechanism Assurance</td>
 <td>
 
 *Default*: Empty list, which means that this additional layer of protection is not active</td>
 </tr>
 <tr>
-<td>Pds – PDSAdmin - role</td>
+<td>Pds – PDSAdmin - Role</td>
 <td>Name of AD group implementing PDS Admin role</td>
 <td>
 
@@ -110,10 +141,11 @@ When set to TRUE, users who have Full control permission on computer objects can
 *Note*: PDS Admin role is allowed to perform the following operations:  
 * Generate new encryption/decryption key pairs
 * Maintain alternate credentials to authorize PDS access to remote forests
+* Maintain list of Supported Forests, Managed Accounts Containers and SID mappings
 </td>
 </tr>
 <tr>
-<td>Pds – License – file</td>
+<td>Pds – License – File</td>
 <td>Path to license file that unlocks the solution from freeware mode</td>
 <td>
 
@@ -127,22 +159,25 @@ Can be also:
 </td>
 </tr>
 <tr>
-<td>Pds – SupportedForests – forest</td>
-<td>List of forests managed by PDS. When missing, only local forest where PDS is installed is supported.</td>
+<td>Pds – SupportedForests – Forest - DnsName</td>
+<td>List of forests managed by PDS. When missing, only local forest where PDS is installed is supported.
+</td>
 <td>
 
-*Default*: Not present, which means that PDS manages only its own AD forest. Forest can contain registration of alternate credentials:  
-* **user**: username 
-* **password**: password for user specified in username
-* **keyId**: ID of key that was used to encrypt the password
+*Default*: Not present, which means that PDS manages only its own AD forest.
+
+Forest can contain registration of connection credentials:  
+* **User**: username 
+* **Password**: password for user specified in username; encrypted by PDS encryption key
+* **KeyId**: ID of key that was used to encrypt the password
 
 *Note*: When alternate creadentials not specified, PDS uses identity of own service account to authenticate access to remote forest.  
 *Note*: Local PDS forest is always supported and does not support alternate credentials.
 </td>
 </tr>
 <tr>
-<td>KeyStore – path</td>
-<td>Path where key pairs are stored</td>
+<td>PDS - FileSystemKeyStore – Path</td>
+<td>Path where keystore stores key pairs</td>
 <td>
 
 *Default*: CryptoKeyStorage  
@@ -154,7 +189,7 @@ Can be also:
 </td>
 </tr>
 <tr>
-<td>KeyStore – pathType</td>
+<td>PDS - FileSystemKeyStore – PathType</td>
 <td>Whether path is absolute or relative</td>
 <td>
 
@@ -163,7 +198,7 @@ Can be also:
 Possible values: Absolute, Relative</td>
 </tr>
 <tr>
-<td>KeyStore – cryptoForNewKeys</td>
+<td>PDS - FileSystemKeyStore – CryptoForNewKeys</td>
 <td>Cryptography used to generate new encryption/decryption keys</td>
 <td>
 
@@ -174,108 +209,113 @@ Possible values:
 * CryptoAPI
 
 
-*Note*: Support for new keys geberated by CryptoAPI is maintained for compatibilityonly,  and ability to generate new keys using CryptoAPI will be removed in future versions. However, PDS will still be able to decrypt passwords encrypted with CryptoPAPI keys</td>
+*Note*: Support for new keys generated by CryptoAPI is maintained for compatibility only,  and ability to generate new keys using CryptoAPI will be removed in future versions. However, PDS will still be able to decrypt passwords encrypted with CryptoPAPI keys</td>
 </tr>
+<td>PDS - FileSystemKeyStore – FavorOAEP</td>
+<td>Whether to try try OAEP padding first or PKCS padding first on decryption.
+
+*Note*: This setting is for compatibility only and will be removed in future versions.
+</td>
+<td>
+
+Default: true
+</td>
+</tr>
+
 <tr>
-<td>KeyStore – SupportedKeySizes – add – value</td>
+<td>PDS - FileSystemKeyStore – SupportedKeySizes – add – KeySize</td>
 <td>List of supported key sizes when creating new key pair</td>
 <td>PDS only allows to create key pair with one of the specified key sizes</td>
 </tr>
 <tr>
-<td> ManagedAccounts - passwordManagementInterval</td>
-<td> How often PDS looks for expired passwords of Managed Domain Accounts</td>
+<td>PDS - ManagedAccounts - PasswordManagementInterval</td>
+<td> How often PDS looks for expired passwords of Managed Domain Accounts in registered Managed Accounts Containers</td>
 <td> 
 
 *Default*: 600 seconds</td>
 </tr>
 <tr>
-<td>ManagedAccounts - containers - add - distinguishedName</td>
+<td>PDS - ManagedAccounts - Containers - Add - DistinguishedName</td>
 <td>DN of container when PDS looks for Managed Domain Accounts to manage password for</td>
-<td></td>
+<td>
+
+*Default*: Empty list
+
+Use PowerShell to manage configuration of Managed Accounts Containers
+</td>
 </tr>
 <tr>
-<td>ManagedAccounts - containers - add - passwordAge</td>
+<td>PDS - ManagedAccounts - Containers - Add - PasswordAge</td>
 <td>Password age for Managed Domain Accounts in given container, in minutes.</td>
 <td>
 
 *Default*: 43200 minutes (30 days)</td>
 </tr>
 <tr>
-<td>ManagedAccounts - containers - add - keyId</td>
+<td>PDS - ManagedAccounts - Containers - Add - KeyId</td>
 <td>ID of encryption key to use to encrypt the password of Managed Domain Account in given container</td>
 <td>
 
 *Default*: 0, which means most recent key managed by keystore</td>
 </tr>
 <tr>
-<td>ManagedAccounts - containers - add - passwordComplexity</td>
+<td>PDS - ManagedAccounts - Containers - Add - PasswordComplexity</td>
 <td>Required complexity of password for Managed Domain Accounts in given container</td>
 <td>
 
 Allowed values:  
-1 .. Large letters  
-2 .. Large and Small letters  
-3 .. Large and Small letters and Numbers  
-4 .. Large and Small letters, Numbers and Special characters
+Large .. Large letters  
+LargeSmall .. Large and Small letters  
+LargeSmallNum .. Large and Small letters and Numbers  
+LargeSmallNumSpec .. Large and Small letters, Numbers and Special characters
 
-*Default*: 4</td>
+*Default*: LargeSmallNumSpec</td>
 </tr>
 <tr>
 <td>ManagedAccounts - containers - add - passwordLength</td>
 <td>Required length of password set by PDS on Managed Domain Accounts in given container</td>
 <td>
 
-*Default*: 14</td>
+*Default*: 12</td>
 </tr>
 </tbody>
 </table>
 
-Sample of pretty-much default configuration:
+Sample of configuration file:
 
 ```xml
-<  <PDS>
-    <Dns>
-      <Autodiscovery UnregisterOnShutdown="true" RegistrationInterval="86400" Priority="100" Weight="100" TTL="1200">
-        <DomainsToPublish>
-        </DomainsToPublish>
-      </Autodiscovery>
-    </Dns>
-    <KeyStore assembly="AdmPwd.PDS" typeName="AdmPwd.PDS.KeyStore.FileSystemKeyStore"/>
-    <AccessControl HonorFullControlPermission="false">
-      <SidMappings>
-        <!--<add id="1" primarySid="S-1-5-21-3637775476-1509572741-3331717474-500" mappedSid="S-1-5-21-418575132-3576222476-798353013-1603" description="my account -> target account"/>-->
-      </SidMappings>
-      <MandatoryGroups>
-        <!--<add groupSid="S-1-5-21-3637775476-1509572741-3331717474-512"/>-->
-      </MandatoryGroups>
-    </AccessControl>
-    <PDSAdmin role="Enterprise Admins"/>
-    <License file=".\license.xml"/>
-    <SupportedForests>
-        <!--<add forest="ad.mydomain.com" user="ad.mydomain.com\PDSAlternateAccount" password="GHpyo4fgtres...." keyId="1"/>-->
-    </SupportedForests>
-  </PDS>
-  
-  <KeyStore path="CryptoKeyStorage" pathType="Relative" cryptoForNewKeys="CNG">
+<?xml version="1.0" encoding="utf-8"?>
+<PDS xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SupportedForests>
+    <Forest DnsName="myRemoteForest.com" />
+  </SupportedForests>
+  <Dns>
+    <Autodiscovery UnregisterOnShutdown="true" RegistrationInterval="86400" Priority="100" Weight="100" TTL="1200">
+      <DomainsToPublish>
+        <Domain DnsName="myRemoteForest.com" />
+      </DomainsToPublish>
+    </Autodiscovery>
+  </Dns>
+  <KeyStoreType Assembly="AdmPwd.PDS" TypeName="AdmPwd.PDS.KeyStore.FileSystemKeyStore" />
+  <AccessControl HonorFullControlPermission="false" HonorAllExtendedRightsPermission="false" HonorLocalGroupsFromRemoteComputerDomain="false">
+    <SidMappings>
+    </SidMappings>
+    <MandatoryGroups />
+  </AccessControl>
+  <PDSAdmin Role="Enterprise Admins" />
+  <License File=".\license.xml" />
+  <FileSystemKeyStore Path="CryptoKeyStorage" PathType="Relative" CryptoForNewKeys="CNG" FavorOAEP="true">
     <SupportedKeySizes>
-      <add value="1024"/>
-      <add value="2048"/>
-      <add value="3072"/>
-      <add value="4096"/>
+      <add KeySize="2048" />
+      <add KeySize="3072" />
+      <add KeySize="4096" />
     </SupportedKeySizes>
-  </KeyStore>
-
-  <ManagedAccounts passwordManagementInterval="600">
-    <containers>
-      <!--<add 
-        distinguishedName="OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com" 
-        passwordAge="43200" 
-        keyId="1" 
-        passwordComplexity="LargeSmallNumSpec" 
-        passwordLength="12" 
-        passwordHistory="false" 
-        passwordHistoryLength="3"
-      />-->
-    </containers>
+  </FileSystemKeyStore>
+  <ManagedAccounts PasswordManagementInterval="600">
+    <Containers>
+      <add DistinguishedName="OU=Managed Domain Accounts,DC=mydomain,DC=com" PasswordAge="43200" KeyId="1" PasswordComplexity="LargeSmallNumSpec" PasswordLength="13" PasswordHistory="true" PasswordHistoryLength="3" />
+      <add DistinguishedName="OU=Managed Domain Accounts,DC=myRemoteDomain,DC=com" PasswordAge="43200" KeyId="1" PasswordComplexity="LargeSmallNum" PasswordLength="16" PasswordHistory="false" PasswordHistoryLength="0" />
+    </Containers>
   </ManagedAccounts>
+</PDS>
 ```

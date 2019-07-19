@@ -89,15 +89,6 @@ License usage: %2 (%3%)</td>
 <td>Logged when license file is not found, does not contain license for Managed Domain Accounts, license file is tampered with, or license is expired</td>
 </tr>
 <tr>
-<td>2100</td>
-<td>Warning</td>
-<td>
-
-License file not found. Running in freeware mode.  
-License file path: %1</td>
-<td>Logged when PDS does not find license file. In this situation, PDS switches to freeware mode.</td>
-</tr>
-<tr>
 <td>2101</td>
 <td>Warning</td>
 <td>

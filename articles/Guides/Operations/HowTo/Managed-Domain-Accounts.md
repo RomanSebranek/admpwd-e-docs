@@ -7,36 +7,40 @@ Main design goal for managed domain account was to provide toolset that allows e
 With Managed Domain Accounts, AdmPwd.E provides password of managed domain accounts to authorized user on demand, while keeping them really random and complex. This means that users do not need to store them in personal password vaults - instead just reach for password, whenever they need it. PDS makes sure that password is regularly changed according to configured age and complexity criteria.
 
 ## Configuration
-Configuration of Managed Domain Accounts is done in PDS configuration file, in section `ManagedAccounts`. You configure OU's or containers where PDS looks for user accounts, and managed password on accounts found here.
+Configuration of Managed Domain Accounts is stored in PDS configuration file, in section `ManagedAccounts`.
 
-Prerequisite is to delegate appropriate permissions to PDS service account via `Set-AdmPwdPdsManagedAccountsPermission`.
+Use PowerShell cmdlets `*-AdmPwdPdsManagedAccountsContainer` to maintain configuration. Powershell cmdlet makes changes as appropriate to configure OU's or containers where PDS looks for user accounts, and managed password on accounts found here.
+
+For PDS to be to manage accounts in the container, it is required to delegate appropriate permissions to PDS service account via `Set-AdmPwdPdsManagedAccountsPermission` cmdlet.
 
 Sample configuration looks like this:
 ```xml
-  <ManagedAccounts passwordManagementInterval="600">
-    <containers>
+  <ManagedAccounts PasswordManagementInterval="600">
+    <Containers>
       add 
-        distinguishedName="OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com" 
-        passwordAge="86400" 
+        DistinguishedName="OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com" 
+        passwordAge="43200" 
         keyId="1" 
         passwordComplexity="LargeSmallNumSpec" 
         passwordLength="12" 
         passwordHistory="false" 
         passwordHistoryLength="3"
       />
-    </containers>
+    </Containers>
   </ManagedAccounts>
 ```
 
 Configuration above says:
 * Manage password on user accounts found in container `OU=MyManagedAccounts,DC=ad,DC=mydomain,DC=com`
-* For each account found, change password every 60 days (86400 minutes)
+* For each account found, change password every 30 days (43200 minutes)
 * When generating password, generape password 12 chars long, that contains Large and Small character, Numbers, and Special Characters
 * Encrypt the password in AD using encryption key with ID=1
 * Do not maintain password history
 
 ## Usage
-Authorized users (those who were granted `Read admin password` permission with PowerShell cmdlet `Set-AdmPwdReadPasswordPermision`) can use password by the following ways:
+First, move user accounts who are candidates for automatic password management to registered Managed Accounts Container.
+
+Then, authorized users (those who were granted `Read admin password` permission with PowerShell cmdlet `Set-AdmPwdReadPasswordPermision`) can use password by the following means:
 * Read the password via PowerShell cmdlet `Get-AdmPwdManagedAccountPassword`
 * Use one of the tools that retrieve and use password automatically
 

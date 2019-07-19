@@ -1,7 +1,9 @@
 # How to make use of AdmPwd.E tools from non-domain joined PC
 Sometimes it may come handy to be able to use AdmPwd.E management tools (or programs integrated with AdmPwd.E, such as mRemoteNG) from non-domain joined PC. However, it's not easy to get authenticated by PDS being outside of forest. One traditional approach is to store credentials for PDS forest in Windows Credential Manager and let machine to use them whenever it needs to authenticate. However, this approach keeps another password on your machine (while still secured by Windows, but anyway...)
 
-Better approach is to use X.509 certificate instead - many accesses are protected by certificate or Smart Card anyway. This article gives guidance for configuration of certificate based Kerberos authentication from non-domain joined PC.
+Better approach is to use X.509 certificate instead - many accesses are protected by certificate or Smart Card anyway. 
+
+This article gives guidance for configuration of certificate based Kerberos authentication from non-domain joined PC. Usage of X.509 certificate does not leave password on device, and can - if the certificate is marked as non-exportable - limit access to specific machines only to those you distribute certificate to.
 
 ## Prerequisites
 Domain controllers must have certificate with EKU = KDC Authentication. There is certificate template 'Kerberos Authentication' in Windows Certification Authority that is properly configured for this purpose.
