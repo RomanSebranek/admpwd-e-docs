@@ -2,7 +2,7 @@
 
 Configuration of PDS service is maintained in `PDS.config` file. Service recognizes configuration parameters as specified in table below.
 
-*Note*: This file is created upon first start of PDS service with default values. CHnages then can be made either manually, or via PowerShell cmdlets. File content is preserved during uninstalls and upgrades of PDS service.
+*Note*: This file is created upon first start of PDS service with default values. Changes then can be made either manually, or via PowerShell cmdlets. File content is preserved during uninstalls and upgrades of PDS service.
 
 PowerShell cmdlets that modify content of PDS.config file are:
 
