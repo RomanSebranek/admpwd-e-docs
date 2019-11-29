@@ -413,4 +413,7 @@ No specific permissions needed.</td>
 </tbody>
 </table>
 
-*Note*: For usage of PowerShell commands, refer to cmdlet help that comes with PowerShell module (Get-Help )
+
+
+*Note*: For usage of PowerShell commands, refer to cmdlet help that comes with PowerShell module (Get-Help <commaand> )
+
