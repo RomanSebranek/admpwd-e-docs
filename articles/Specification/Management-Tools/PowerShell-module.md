@@ -335,6 +335,81 @@ Audited
 PDS Admin role required
 </td>
 </tr>
+
+<tr>
+<td>Get-AdmPwdAccessControlParameters</td>
+<td>
+Returns values of parameters for access control. Acces control is scaled to the following granularity by this attributes: HonorFullControlPermission, HonorAllExtendedRightsPermission, HonorLocalGroupsFromRemoteComputerDomain</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsDnsParameters</td>
+<td>
+Returns values of DNS SRV record. That is used by service clients to find live instance of the service.</td>
+<td>Communicates with !!!potřeba doplnit!!!
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsLicenseParameters</td>
+<td>
+Returns values of license parameters, specifically these: PdsName and LicenseFilePath</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsManagedAccountsParameters</td>
+<td>
+Returns values of managed accounts parameters, specifically these: PasswordManagementInterval, DistinguishedName, PasswordAge, KeyId, PasswordComplexity, PasswordLength, PasswordHistory and PasswordHistoryLength.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsAccessControlParameters</td>
+<td>
+Sets each access control parameter.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsDnsParameters</td>
+<td>
+Sets parameters in DNS SRV record.</td>
+<td>Communicates with !!!Nutno doplnit!!!.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsLicenseParameters</td>
+<td>
+Sets parameters of license file.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsManagedAccountsParameters</td>
+<td>
+Sets each parameter of managed accounts.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Move-AdmPwdPdsAdminRole</td>
+<td>
+Transfer PDS admin rights to new owner.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+
+
 </tbody>
 </table>
 
